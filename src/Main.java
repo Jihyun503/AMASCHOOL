@@ -71,12 +71,18 @@ class Main_frame extends JFrame{
 			getContentPane().add(ingregame);
 			revalidate();
 			repaint();
-			ingregame.start();
     	}
 		if(PanelName.equals("test")) {
     		this.test = new Test(this);
     		getContentPane().removeAll();
 			getContentPane().add(test);
+			revalidate();
+			repaint();
+    	}
+		if(PanelName.equals("index")) {
+    		this.index = new Index(this);
+    		getContentPane().removeAll();
+			getContentPane().add(index);
 			revalidate();
 			repaint();
     	}

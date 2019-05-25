@@ -35,9 +35,23 @@ public class IngreGame extends JPanel{
 	int x1 = 0, x2 = 0, x3 = 0, x4 = 0, x5 = 0, x6 = 0, x7 = 0, x8 = 0, x9 = 0, x10 = 0, x11 = 0, x12 = 0;
 	int y1 = 0, y2 = 0, y3 = 0, y4 = 0, y5 = 0, y6 = 0, y7 = 0, y8 = 0, y9 = 0, y10 = 0, y11 = 0, y12 = 0;
 	
+	JLabel howto, result1, result2;
 	
 	ImageIcon skipbtn = new ImageIcon("skip.png");
 	JButton skip_btn = new JButton(skipbtn);
+	
+	ImageIcon xbtn = new ImageIcon("error.png");
+	JButton x_btn = new JButton(xbtn);
+	
+	ImageIcon nextbtn = new ImageIcon("next.png");
+	JButton next_btn = new JButton(nextbtn);
+	
+	ImageIcon rebtn = new ImageIcon("replay.png");
+	JButton re_btn = new JButton(rebtn);
+	
+	ImageIcon exitbtn = new ImageIcon("exit.png");
+	JButton exit_btn = new JButton(exitbtn);
+	
 	
 	IngreGame(Main_frame frame){
 		setLayout(null);
@@ -55,6 +69,59 @@ public class IngreGame extends JPanel{
 			}
 		});
 	    
+	    next_btn.setBorderPainted(false);
+	    next_btn.setContentAreaFilled(false);
+	    next_btn.setBounds(1450, 900, 221, 76);
+	    
+	    next_btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.change("select");
+				
+			}
+		});
+	    
+	    re_btn.setBorderPainted(false);
+	    re_btn.setContentAreaFilled(false);
+	    re_btn.setBounds(1250, 900, 221, 76);
+	    
+	    re_btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.change("ingregame");
+				
+			}
+		});
+	    
+	    exit_btn.setBorderPainted(false);
+	    exit_btn.setContentAreaFilled(false);
+	    exit_btn.setBounds(1450, 900, 221, 76);
+	    
+	    exit_btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.change("index");
+				
+			}
+		});
+	    
+	    
+	    ImageIcon resultImg1 = new ImageIcon("result_ok.jpg");
+		result1 = new JLabel(resultImg1); 
+		result1.setBounds(100, 0, 1700, 1000);
+		
+		ImageIcon resultImg2 = new ImageIcon("result_x.jpg");
+		result2 = new JLabel(resultImg2); 
+		result2.setBounds(100, 0, 1700, 1000);
+		
+		ImageIcon how = new ImageIcon("how.png");
+		howto = new JLabel(how); 
+		howto.setBounds(100, 0, 1700, 1000);
+		
+	    
 		ImageIcon doraemong = new ImageIcon("people.png");
 		mong = new JLabel(doraemong);
 		
@@ -65,6 +132,7 @@ public class IngreGame extends JPanel{
 		ImageIcon ingre5 = new ImageIcon("img/ingreFruit7.png");
 		
 		ImageIcon app = new ImageIcon("img/app.png");
+		
 		
 		ingreFruit1 = new JLabel(ingre1);
 		ingreFruit2 = new JLabel(ingre2);
@@ -78,19 +146,18 @@ public class IngreGame extends JPanel{
 		ingreJuice3 = new JLabel(app);
 		ingreJuice4 = new JLabel(app);
 		
-		x1 = (int)(Math.random() * 1600);
-		x2 = (int)(Math.random() * 1600);
-		x3 = (int)(Math.random() * 1600);
-		x4 = (int)(Math.random() * 1600);
-		x5 = (int)(Math.random() * 1600);
 		
-		x6 = (int)(Math.random() * 1600);
-		x7 = (int)(Math.random() * 1600);
-		x8 = (int)(Math.random() * 1600);
-		x9 = (int)(Math.random() * 1600);
-		x10 = (int)(Math.random() * 1600);
-		x11 = (int)(Math.random() * 1600);
-		x12 = (int)(Math.random() * 1600);
+		x1 = (int)(Math.random() * 1700);
+		x2 = (int)(Math.random() * 1700);
+		x3 = (int)(Math.random() * 1700);
+		x4 = (int)(Math.random() * 1700);
+		x5 = (int)(Math.random() * 1700);
+		
+		
+		x7 = (int)(Math.random() * 1700);
+		x10 = (int)(Math.random() * 1700);
+		x11 = (int)(Math.random() * 1700);
+		x12 = (int)(Math.random() * 1700);
 		
 		mong.setLocation(x, y);
 		mong.setSize(170, 308);
@@ -106,9 +173,11 @@ public class IngreGame extends JPanel{
 		ingreJuice3.setBounds(x11, 0, 54, 70);
 		ingreJuice4.setBounds(x12, 0, 54, 70);
 		
-		add(mong);
+		add(howto);
 		
-		add(ingreFruit1);
+		//add(mong);
+		
+		/*add(ingreFruit1);
 		add(ingreFruit2);
 		add(ingreFruit3);
 		add(ingreFruit4);
@@ -117,32 +186,46 @@ public class IngreGame extends JPanel{
 		add(ingreJuice1);
 		add(ingreJuice2);
 		add(ingreJuice3);
-		add(ingreJuice4);
-		
-		
+		add(ingreJuice4);*/
 		
 
-				frame.setFocusable(true);
-			    frame.addKeyListener(new KeyAdapter() {
-					public void keyPressed(KeyEvent e) {
-						this.KeyPressed(e);
-					}
+		frame.setFocusable(true);
+		frame.addKeyListener(new KeyAdapter() {
+		public void keyPressed(KeyEvent e) {
+				this.KeyPressed(e);
+		}
 
-					private void KeyPressed(KeyEvent e) {
-						if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-							x -= 10;
-							mong.setLocation(x, y);
-						}
-						if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-							x += 10;
-							mong.setLocation(x, y);
-						}
+		private void KeyPressed(KeyEvent e) {
+			if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+					x -= 10;
+					mong.setLocation(x, y);
+			}
+			if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+					x += 10;
+					mong.setLocation(x, y);
+			}
 						
-					}
-				});
+		}
+	});
+	
+	x_btn.setBorderPainted(false);
+    x_btn.setContentAreaFilled(false);
+    x_btn.setBounds(1690, 10, 32, 32);
+    add(x_btn);
+    
+    x_btn.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			start();
+			x_btn.setVisible(false);
+			howto.setVisible(false);
+			skip_btn.setVisible(false);
+		}
+	});
 			    
 		
-	}
+}
 	private boolean hit(int x, int y, int w, int h){
 	    
 	    if(targetContains(x,y)
@@ -174,12 +257,30 @@ public class IngreGame extends JPanel{
 			@Override
 			public void run() {
 				
+				add(result1);
+				result1.setVisible(false);
+				add(result2);
+				result2.setVisible(false);
+				
+				add(mong);
+				
+				add(ingreFruit1);
+				add(ingreFruit2);
+				add(ingreFruit3);
+				add(ingreFruit4);
+				add(ingreFruit5);
+				
+				add(ingreJuice1);
+				add(ingreJuice2);
+				add(ingreJuice3);
+				add(ingreJuice4);
 				
 				ingreFruit1.setVisible(true);
 				ingreFruit2.setVisible(true);
 				ingreFruit3.setVisible(true);
 				ingreFruit4.setVisible(true);
 				ingreFruit5.setVisible(true);
+				
 				
 				 do {
 					 /*ck1 = 0;
@@ -318,23 +419,31 @@ public class IngreGame extends JPanel{
 						 
 						 if(hit(ingreJuice1.getX(), ingreJuice1.getY(), ingreJuice1.getWidth(), ingreJuice1.getHeight()))
 						 {	
-						 	 
+							 	result2.setVisible(true);
+							 	add(re_btn);
+							 	add(exit_btn);
 							 	break;
 								
 						 }
 						 else if(hit(ingreJuice2.getX(), ingreJuice2.getY(), ingreJuice2.getWidth(), ingreJuice2.getHeight()))
 						 {
-							  
+							 	result2.setVisible(true);
+							 	add(re_btn);
+							 	add(exit_btn);
 								break;
 						 }
 						 else if(hit(ingreJuice3.getX(), ingreJuice3.getY(), ingreJuice3.getWidth(), ingreJuice3.getHeight()))
 						 {
-							 
+							 	result2.setVisible(true);
+							 	add(re_btn);
+							 	add(exit_btn);
 								break;
 						 }
 						 else if(hit(ingreJuice4.getX(), ingreJuice4.getY(), ingreJuice4.getWidth(), ingreJuice4.getHeight()))
 						 {
-							 
+							 	result2.setVisible(true);
+							 	add(re_btn);
+							 	add(exit_btn);
 								break;
 						 }
 						 else if(hit(ingreFruit1.getX(), ingreFruit1.getY(), ingreFruit1.getWidth(), ingreFruit1.getHeight()))
@@ -386,8 +495,14 @@ public class IngreGame extends JPanel{
 							 
 						}
 						 
+					
+						 
 					if(ck1>1&&ck2>1&&ck3>1&&ck4>1&&ck5>1) {
+						result1.setVisible(true);
+						add(next_btn);
+						add(re_btn);
 						break;
+						
 					}
 						 
 						 
