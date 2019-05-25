@@ -39,7 +39,7 @@ public class Index extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.change("ingregame");
+				frame.change("test");
 				
 			}
 		});

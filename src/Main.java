@@ -73,6 +73,13 @@ class Main_frame extends JFrame{
 			repaint();
 			ingregame.start();
     	}
+		if(PanelName.equals("test")) {
+    		this.test = new Test(this);
+    		getContentPane().removeAll();
+			getContentPane().add(test);
+			revalidate();
+			repaint();
+    	}
     }
 	
 }

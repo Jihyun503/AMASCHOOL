@@ -59,6 +59,7 @@ public class Game2 extends JPanel implements ActionListener{
 	//private JSlider slider1 ;
 	JLabel recipe1;
 	JLabel hint_recipe; 
+	JButton X_btn2;
 	int chk1, chk2, chk3, chkresult = 0;
 	
 
@@ -76,19 +77,43 @@ public class Game2 extends JPanel implements ActionListener{
 
 	
 	Timer mTimer = new Timer(1000, this);//1초씩 증가
-	int mTime = 30;//초 카운트
+	int mTime = 45;//초 카운트
+	
+	int check = 0;
+	
+	//힌트
+	Timer hTimer = new Timer(1000, this);
+	int hTime = 7;
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(mTimer == arg0.getSource()){
 			mTime--;//30초부터 감소
 			if(mTime <= 0){ //mTime이 0이 되면 타이머를 멈추고 알림창 띄워주기
 				mTimer.stop();
-				JOptionPane.showMessageDialog(null, "30초가 지났습니다.");
-			}//fi
+				 int num = 0;
+				 if(num==0) {
+					 ImageIcon middle = new ImageIcon("x.png");
+						JLabel two = new JLabel(middle); 
+						two.setBounds(270, 100, 1366,768);
+						add(two);
+				 }
+			}
+			repaint();//컨트롤 변화
+		}//if
+		
+		if(hTimer == arg0.getSource()){
+			hTime--;
+			if(hTime <= 0){ 
+				hTimer.stop();
+				remove(hint_recipe);
+				remove(X_btn2);
+				hTime = 7;
+			}
 			repaint();//컨트롤 변화
 		}//if
 	}//actionPerformed
-
+	
 	@Override
 	public void paint(Graphics g) {//글씨
 		super.paint(g);
@@ -98,14 +123,8 @@ public class Game2 extends JPanel implements ActionListener{
 		g.drawString(msg, 0, 30);
 	}//paint
 	
-	
-	
 	public Game2(Main_frame frame) {
-		
-	    
-	    
-	   
-		
+
 		MouseListener m1 = new MouseListener() {
 
 			@Override
@@ -192,7 +211,7 @@ public class Game2 extends JPanel implements ActionListener{
 	    X_btn1.setBounds(1690, 10, 32, 32);
 	    add(X_btn1);
 	    
-	    ImageIcon recipe = new ImageIcon("recipe.png");
+	    ImageIcon recipe = new ImageIcon("recipe2.png");
 		recipe1 = new JLabel(recipe); 
 		recipe1.setBounds(100, 0, 1700,1000);
 		add(recipe1);
@@ -219,34 +238,38 @@ public class Game2 extends JPanel implements ActionListener{
 	    Hint.setBounds(70, -55, 150, 150);
 	    add(Hint);
 
-	    ImageIcon h_recipe = new ImageIcon("recipe.png");
+	    ImageIcon h_recipe = new ImageIcon("recipe2.png");
 		hint_recipe = new JLabel(h_recipe); 
 		hint_recipe.setBounds(70, 0, 1366,768);
 		
 		ImageIcon Xbtn2 = new ImageIcon("error.png");
-	    JButton X_btn2 = new JButton(Xbtn2);
+	    X_btn2 = new JButton(Xbtn2);
 	    X_btn2.setBorderPainted(false);
 	    X_btn2.setContentAreaFilled(false);
-	    X_btn2.setBounds(1326, 267, 32, 32);
+	    X_btn2.setBounds(1290, 10, 32, 32);
 	
         Hint.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				add(X_btn2);
 				add(hint_recipe);
+				hTimer.start();
 				
-				  X_btn2.addActionListener(new ActionListener() {
-						
+				check++;
+				
+				if(check==2) {
+					Hint.setEnabled(false);
+				}
+				
+				X_btn2.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							remove(hint_recipe);
 							remove(X_btn2);
-							
 						}
 					});
 			}
 		});
-
 
 		
 		ImageIcon ingrePearls1 = new ImageIcon("ingrePearl1.png");

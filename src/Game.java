@@ -59,6 +59,7 @@ public class Game extends JPanel implements ActionListener{
 	//private JSlider slider1 ;
 	JLabel recipe1;
 	JLabel hint_recipe; 
+	JButton X_btn2;
 	int chk1, chk2, chk3, chkresult = 0;
 	
     ImageIcon okbtn1 = new ImageIcon("ok.png");
@@ -72,20 +73,44 @@ public class Game extends JPanel implements ActionListener{
 	JLabel text = new JLabel();
 	Random r = new Random();
 
-	
 	Timer mTimer = new Timer(1000, this);//1초씩 증가
-	int mTime = 30;//초 카운트
+	int mTime = 60;//초 카운트
+	
+	int check = 0;
+	
+	//힌트
+	Timer hTimer = new Timer(1000, this);
+	int hTime = 10;
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(mTimer == arg0.getSource()){
 			mTime--;//30초부터 감소
 			if(mTime <= 0){ //mTime이 0이 되면 타이머를 멈추고 알림창 띄워주기
 				mTimer.stop();
-				JOptionPane.showMessageDialog(null, "30초가 지났습니다.");
-			}//fi
+				 int num = 0;
+				 if(num==0) {
+					 ImageIcon middle = new ImageIcon("x.png");
+						JLabel two = new JLabel(middle); 
+						two.setBounds(270, 100, 1366,768);
+						add(two);
+				 }
+			}
+			repaint();//컨트롤 변화
+		}//if
+		
+		if(hTimer == arg0.getSource()){
+			hTime--;
+			if(hTime <= 0){ 
+				hTimer.stop();
+				remove(hint_recipe);
+				remove(X_btn2);
+				hTime = 10;
+			}
 			repaint();//컨트롤 변화
 		}//if
 	}//actionPerformed
+
 
 	@Override
 	public void paint(Graphics g) {//글씨
@@ -95,8 +120,7 @@ public class Game extends JPanel implements ActionListener{
 		g.setFont(new Font("Serif", Font.BOLD, 30));//글씨
 		g.drawString(msg, 0, 30);
 	}//paint
-	
-	
+
 	
 	public Game(Main_frame frame) {
 		MouseListener m1 = new MouseListener() {
@@ -173,10 +197,7 @@ public class Game extends JPanel implements ActionListener{
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
-			}
-	
-			
+			}	
 		};
 		ImageIcon Xbtn1 = new ImageIcon("error.png");
 	    JButton X_btn1 = new JButton(Xbtn1);
@@ -205,7 +226,7 @@ public class Game extends JPanel implements ActionListener{
 		//add(recipe1);
 
 
-      ImageIcon hint = new ImageIcon("hint.png");
+        ImageIcon hint = new ImageIcon("hint.png");
 	    JButton Hint = new JButton(hint);
 	    Hint.setBorderPainted(false);
 	    Hint.setContentAreaFilled(false);
@@ -217,31 +238,34 @@ public class Game extends JPanel implements ActionListener{
 		hint_recipe.setBounds(70, 0, 1366,768);
 		
 		ImageIcon Xbtn2 = new ImageIcon("error.png");
-	    JButton X_btn2 = new JButton(Xbtn2);
+	    X_btn2 = new JButton(Xbtn2);
 	    X_btn2.setBorderPainted(false);
 	    X_btn2.setContentAreaFilled(false);
-	    X_btn2.setBounds(1326, 267, 32, 32);
+	    X_btn2.setBounds(800, 10, 32, 32);
 	
         Hint.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				add(X_btn2);
 				add(hint_recipe);
+				hTimer.start();
 				
-				  X_btn2.addActionListener(new ActionListener() {
-						
+				check++;
+				
+				if(check==3) {
+					Hint.setEnabled(false);
+				}
+				
+				X_btn2.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							remove(hint_recipe);
 							remove(X_btn2);
-							
 						}
 					});
 			}
 		});
 
-
-		
 		ImageIcon ingrePearls1 = new ImageIcon("ingrePearl1.png");
 		ingrePearl1 = new JLabel(ingrePearls1);
 		ingrePearl1.setBounds(70, 760, 140, 140);
@@ -441,7 +465,6 @@ public class Game extends JPanel implements ActionListener{
 			@Override
 			public void mouseMoved(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
 			}
 			
 		});
@@ -478,7 +501,6 @@ public class Game extends JPanel implements ActionListener{
 			@Override
 			public void mouseMoved(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
 			}
 			
 		});
@@ -607,10 +629,6 @@ public class Game extends JPanel implements ActionListener{
     ok_btn1.setContentAreaFilled(false);
     ok_btn1.setBounds(1570, 500, 221, 76);
     add(ok_btn1);
-    
-    
-    
-	
 
     ok_btn1.addActionListener(new ActionListener() {
 
