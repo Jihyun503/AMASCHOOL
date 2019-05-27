@@ -48,7 +48,7 @@ public class Game extends JPanel implements ActionListener{
 
 	JLabel ingrePearl1, ingrePearl2, ingrePearl3;
 	JLabel ingreJuice1, ingreJuice2, ingreJuice3, ingreJuice4;
-	JLabel ingreFruit1, ingreFruit2, ingreFruit3, ingreFruit4;
+	JLabel ingreFruit1, ingreFruit2, ingreFruit3, ingreFruit4,milk,yogert,cida;
 	JLabel cup;
 	ImageIcon ingrePearls1,ingrePearls2,ingrePearls3,ingreFruits1,ingreFruits2,ingreFruits3,ingreFruits4,ingreJuices1,ingreJuices3,ingreJuices4;
 	JLabel pic1,pic2,pic3;
@@ -332,9 +332,12 @@ public class Game extends JPanel implements ActionListener{
 				  ingrePearl1.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
 				  if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>400&& e.getLocationOnScreen().y - mouseClickedLocation.y>100&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
 					  Play("Coin.wav"); 
-					  ImageIcon manyta=new ImageIcon("manyta.png");
-				
-					  ingrePearl1.setIcon(manyta);
+					  remove(ingrePearl1);
+						ImageIcon tapi=new ImageIcon("tatatwo.png");
+						JLabel tapi1 = new JLabel(tapi);
+					
+						tapi1.setBounds(424,114,535,428);
+						add(tapi1);
 						a2=1;
 				
 					}
@@ -365,8 +368,12 @@ public class Game extends JPanel implements ActionListener{
 				  ingrePearl2.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
 				  if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>420&& e.getLocationOnScreen().y - mouseClickedLocation.y>100&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
 					  Play("Coin.wav"); 
-					  ImageIcon manyco=new ImageIcon("manycoco.png");
-					  ingrePearl2.setIcon(manyco);
+					  remove(ingrePearl2);
+						ImageIcon coco=new ImageIcon("cocoptwo.png");
+						JLabel coco1 = new JLabel(coco);
+					
+						coco1.setBounds(410,114,535,428);
+						add(coco1);
 						b2=1;
 				
 					}
@@ -398,8 +405,12 @@ public class Game extends JPanel implements ActionListener{
 				  ingrePearl3.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
 				  if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>420&& e.getLocationOnScreen().y - mouseClickedLocation.y>100&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
 					  Play("Coin.wav"); 
-					  ImageIcon manyjelly=new ImageIcon("manyjelly.png");
-					  ingrePearl3.setIcon(manyjelly);
+					  remove(ingrePearl3);
+						ImageIcon jelly=new ImageIcon("jellytwo.png");
+						JLabel jelly1 = new JLabel(jelly);
+					
+						jelly1.setBounds(500,200,350,250);
+						add(jelly1);
 						c2=1;
 				
 					}
@@ -431,8 +442,12 @@ public class Game extends JPanel implements ActionListener{
 			
 			if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>420&& e.getLocationOnScreen().y - mouseClickedLocation.y>100&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
 				Play("Coin.wav"); 
-				 ImageIcon manystraw=new ImageIcon("manystraw.png");
-				 ingreFruit1.setIcon(manystraw);
+				remove(ingreFruit1);
+				ImageIcon st=new ImageIcon("strawtwo.png");
+				JLabel st1 = new JLabel(st);
+			
+				st1.setBounds(440,140,465,344);
+				add( st1);
 				a=1;
 				System.out.println("a:"+a);
 			}
@@ -468,8 +483,12 @@ public class Game extends JPanel implements ActionListener{
 //					cup1.setBounds(480,100,800,800);
 //					add(cup1);
 					Play("Coin.wav"); 
-					 ImageIcon manyblue=new ImageIcon("manyblue.png");
-					 ingreFruit2.setIcon(manyblue);
+					remove(ingreFruit2);
+					ImageIcon bl=new ImageIcon("bluetwo.png");
+					JLabel bl1 = new JLabel(bl);
+				
+					bl1.setBounds(448,125,450,410);
+					add(bl1);
 					b=1;
 					System.out.println("b:"+b);
 				}
@@ -505,8 +524,12 @@ public class Game extends JPanel implements ActionListener{
 //					cup1.setBounds(480,100,800,800);
 //					add(cup1);
 					Play("Coin.wav"); 
-					 ImageIcon manyoreo=new ImageIcon("manyoreo.png");
-					 ingreFruit3.setIcon(manyoreo);
+					remove(ingreFruit3);
+					ImageIcon oreo=new ImageIcon("oreotwo.png");
+					JLabel oreo1 = new JLabel(oreo);
+				
+					oreo1.setBounds(460,125,400,360);
+					add(oreo1);
 					c=1;
 					System.out.println("c:"+c);
 				}
@@ -541,8 +564,12 @@ public class Game extends JPanel implements ActionListener{
 //					cup1.setBounds(480,100,800,800);
 //					add(cup1);
 					Play("Coin.wav"); 
-					 ImageIcon manygreen=new ImageIcon("manygreen.png");
-					 ingreFruit4.setIcon(manygreen);
+					remove(ingreFruit4);
+					ImageIcon green=new ImageIcon("greentwo.png");
+					JLabel green1 = new JLabel(green);
+				
+					green1.setBounds(495,145,400,360);
+					add(green1);
 					d=1;
 					System.out.println("d:"+d);
 				}
@@ -583,8 +610,12 @@ public class Game extends JPanel implements ActionListener{
 //					cup1.setBounds(480,100,800,800);
 //					add(cup1);
 					Play("Coin.wav"); 
-					ImageIcon yogert=new ImageIcon("yogert.png");
-					ingreJuice2.setIcon(yogert);
+					remove(ingreJuice2);
+					ImageIcon yougert=new ImageIcon("yogert.png");
+					JLabel yougert1 = new JLabel(yougert);
+				
+					yougert1.setBounds(424,114,535,428);
+					add(yougert1);
 					a1=1;
 					System.out.println("a1:"+a1);
 				}
@@ -618,8 +649,12 @@ public class Game extends JPanel implements ActionListener{
 //					cup1.setBounds(480,100,800,800);
 //					add(cup1);
 					Play("Coin.wav"); 
+					remove(ingreJuice3);
 					ImageIcon milk=new ImageIcon("milk.png");
-					ingreJuice3.setIcon(milk);
+					JLabel milk1 = new JLabel(milk);
+				
+					milk1.setBounds(424,114,535,428);
+					add(milk1);
 					b1=1;
 					System.out.println("b1:"+b1);
 				}
@@ -654,8 +689,12 @@ public class Game extends JPanel implements ActionListener{
 //					cup1.setBounds(480,100,800,800);
 //					add(cup1);
 					Play("Coin.wav"); 
+					remove(ingreJuice4);
 					ImageIcon cida=new ImageIcon("cida.png");
-					ingreJuice4.setIcon(cida);
+					JLabel cida1 = new JLabel(cida);
+				
+					cida1.setBounds(424,114,535,428);
+					add(cida1);
 					c1=1;
 					System.out.println("c1:"+c1);
 				}
