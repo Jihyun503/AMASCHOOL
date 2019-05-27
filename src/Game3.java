@@ -49,6 +49,7 @@ public class Game3 extends JPanel implements ActionListener{
 	JLabel ingrePearl1, ingrePearl2, ingrePearl3;
 	JLabel ingreJuice,ingreJuice1, ingreJuice2, ingreJuice3, ingreJuice4;
 	JLabel ingreFruit1, ingreFruit2, ingreFruit3, ingreFruit4;
+	ImageIcon ingrePearls1,ingrePearls2,ingrePearls3,ingreFruits1,ingreFruits2,ingreFruits3,ingreFruits4,ingreJuices1,ingreJuices3,ingreJuices4;
 	JLabel cup;
 	JLabel pic1,pic2,pic3;
 	int a,b,c,d; //과일
@@ -59,11 +60,8 @@ public class Game3 extends JPanel implements ActionListener{
 	//private JSlider slider1 ;
 	JLabel recipe1;
 	JLabel hint_recipe; 
-	JButton X_btn2;
 	int chk1, chk2, chk3, chkresult = 0;
 	
-
-    
     ImageIcon okbtn1 = new ImageIcon("ok.png");
     JButton ok_btn1 = new JButton(okbtn1);
     Point mouseClickedLocation = new Point(0, 0);
@@ -75,16 +73,26 @@ public class Game3 extends JPanel implements ActionListener{
 	JLabel text = new JLabel();
 	Random r = new Random();
 
+	ImageIcon replay = new ImageIcon("replay.png");
+    JButton replay_btn = new JButton(replay);
+    
+	ImageIcon middle = new ImageIcon("good.png");
+	JLabel two = new JLabel(middle); 
 	
+	ImageIcon exit = new ImageIcon("exit.png");
+    JButton exit_btn = new JButton(exit);
+	
+    ImageIcon middle2 = new ImageIcon("x.png");
+	JLabel two2 = new JLabel(middle2); 
+
 	Timer mTimer = new Timer(1000, this);//1초씩 증가
-	int mTime = 30;//초 카운트
+	int mTime = 20;//초 카운트
 	
-	int check = 0;
+	JButton X_btn2;
+	int check=0;
 	
-	//힌트
-	Timer hTimer = new Timer(1000, this);
-	int hTime = 5;
-	
+	Timer hTimer = new Timer(1000, this);//1초씩 증가
+	int hTime = 3;//초 카운트
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(mTimer == arg0.getSource()){
@@ -108,7 +116,7 @@ public class Game3 extends JPanel implements ActionListener{
 				hTimer.stop();
 				remove(hint_recipe);
 				remove(X_btn2);
-				hTime = 5;
+				hTime = 10;
 			}
 			repaint();//컨트롤 변화
 		}//if
@@ -122,6 +130,8 @@ public class Game3 extends JPanel implements ActionListener{
 		g.setFont(new Font("Serif", Font.BOLD, 30));//글씨
 		g.drawString(msg, 0, 30);
 	}//paint
+	
+	
 	
 	public Game3(Main_frame frame) {
 
@@ -208,7 +218,7 @@ public class Game3 extends JPanel implements ActionListener{
 	    JButton X_btn1 = new JButton(Xbtn1);
 	    X_btn1.setBorderPainted(false);
 	    X_btn1.setContentAreaFilled(false);
-	    X_btn1.setBounds(1690, 10, 32, 32);
+	    X_btn1.setBounds(1290, 330, 32, 32);
 	    add(X_btn1);
 	    
 	    ImageIcon recipe = new ImageIcon("recipe3.png");
@@ -230,8 +240,43 @@ public class Game3 extends JPanel implements ActionListener{
 		//recipe1.setBounds(350, 200, 1366,768);
 		//add(recipe1);
 
+	    replay_btn.setBorderPainted(false);
+	    replay_btn.setContentAreaFilled(false);
+	    replay_btn.setBounds(1100, 700, 169, 63);
+		add(replay_btn);
+		
+		replay_btn.addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.change("select");
+			}
+		});
 
-      ImageIcon hint = new ImageIcon("hint.png");
+	    exit_btn.setBorderPainted(false);
+	    exit_btn.setContentAreaFilled(false);
+	    exit_btn.setBounds(1300, 720, 107, 40);
+		add(exit_btn);
+		
+		exit_btn.addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.change("index");
+			}
+		});
+		
+		replay_btn.setVisible(false);
+		exit_btn.setVisible(false);
+	    
+	    
+		two.setBounds(270, 100, 1000,579);
+		add(two);
+		two.setVisible(false);
+		
+		two2.setBounds(270, 100, 1366,768);
+		add(two2);
+		two2.setVisible(false);
+  
+        ImageIcon hint = new ImageIcon("hint.png");
 	    JButton Hint = new JButton(hint);
 	    Hint.setBorderPainted(false);
 	    Hint.setContentAreaFilled(false);
@@ -246,9 +291,9 @@ public class Game3 extends JPanel implements ActionListener{
 	    X_btn2 = new JButton(Xbtn2);
 	    X_btn2.setBorderPainted(false);
 	    X_btn2.setContentAreaFilled(false);
-	    X_btn2.setBounds(1290, 10, 32, 32);
+	    X_btn2.setBounds(1100, 210, 32, 32);
 	
-        Hint.addActionListener(new ActionListener() {
+	    Hint.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				add(X_btn2);
@@ -257,131 +302,154 @@ public class Game3 extends JPanel implements ActionListener{
 				
 				check++;
 				
-				if(check==2) {
+				if(check==1) {
 					Hint.setEnabled(false);
 				}
 				
-				X_btn2.addActionListener(new ActionListener() {
+				  X_btn2.addActionListener(new ActionListener() {
+						
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							remove(hint_recipe);
 							remove(X_btn2);
+							
 						}
 					});
 			}
 		});
 
+        ingrePearls1 = new ImageIcon("ingrePearl1.png");
+      		ingrePearl1 = new JLabel(ingrePearls1);
+      		ingrePearl1.setBounds(70, 760, 140, 140);
+      		add(ingrePearl1);
+      		ingrePearl1.addMouseMotionListener(new MouseMotionListener() {
+
+      			@Override
+      			public void mouseDragged(MouseEvent e) {
+      				// TODO Auto-generated method stub
+//      				   int x = e.getX();
+//      				   int y = e.getY();
+      				  ingrePearl1.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
+      				  if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>400&& e.getLocationOnScreen().y - mouseClickedLocation.y>100&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
+      					  Play("Coin.wav"); 
+      					  ImageIcon manyta=new ImageIcon("manyta.png");
+      				
+      					  ingrePearl1.setIcon(manyta);
+      						a2=1;
+      				
+      					}
+      				  else {
+      					  ingrePearl1.setIcon(ingrePearls1);
+      				  }
+      			}
+
+      			@Override
+      			public void mouseMoved(MouseEvent e) {
+      				// TODO Auto-generated method stub
+      				
+      			}
+      			
+      		});
+      		
+      		ingrePearls2 = new ImageIcon("ingrePearl2.png");
+      		ingrePearl2 = new JLabel(ingrePearls2);
+      		ingrePearl2.setBounds(260, 760, 140, 140);
+      		add(ingrePearl2);
+      		ingrePearl2.addMouseMotionListener(new MouseMotionListener() {
+
+      			@Override
+      			public void mouseDragged(MouseEvent e) {
+      				// TODO Auto-generated method stub
+//      				   int x = e.getX();
+//      				   int y = e.getY();
+      				  ingrePearl2.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
+      				  if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>420&& e.getLocationOnScreen().y - mouseClickedLocation.y>100&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
+      					  Play("Coin.wav"); 
+      					  ImageIcon manyco=new ImageIcon("manycoco.png");
+      					  ingrePearl2.setIcon(manyco);
+      						b2=1;
+      				
+      					}
+      				  else {
+      					  ingrePearl2.setIcon(ingrePearls2);
+      				  }
+      			}
+
+      			@Override
+      			public void mouseMoved(MouseEvent e) {
+      				// TODO Auto-generated method stub
+      				
+      			}
+      			
+      		});
+      		
+      		ingrePearls3 = new ImageIcon("ingrePearl3.png");
+      		ingrePearl3 = new JLabel(ingrePearls3);
+      		ingrePearl3.setBounds(440, 760, 140, 140);
+      		add(ingrePearl3);
+      		ingrePearl3.addMouseMotionListener(new MouseMotionListener() {
+
+      			@Override
+      			public void mouseDragged(MouseEvent e) {
+      				// TODO Auto-generated method stub
+//      				   int x = e.getX();
+//      				   int y = e.getY();
+      			
+      				  ingrePearl3.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
+      				  if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>420&& e.getLocationOnScreen().y - mouseClickedLocation.y>100&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
+      					  Play("Coin.wav"); 
+      					  ImageIcon manyjelly=new ImageIcon("manyjelly.png");
+      					  ingrePearl3.setIcon(manyjelly);
+      						c2=1;
+      				
+      					}
+      				  else {
+      					  ingrePearl3.setIcon(ingrePearls3);
+      				  }
+      			}
+
+      			@Override
+      			public void mouseMoved(MouseEvent e) {
+      				// TODO Auto-generated method stub
+      				
+      			}
+      			
+      		});
+      		
 		
-		ImageIcon ingrePearls1 = new ImageIcon("ingrePearl1.png");
-		ingrePearl1 = new JLabel(ingrePearls1);
-		ingrePearl1.setBounds(70, 760, 140, 140);
-		add(ingrePearl1);
-		ingrePearl1.addMouseMotionListener(new MouseMotionListener() {
+      		ingreFruits1 = new ImageIcon("ingreFruit1.png");
+    		ingreFruit1 = new JLabel(ingreFruits1);
+    		ingreFruit1.setBounds(650, 710, 150, 135);
+    		add(ingreFruit1);
+    		ingreFruit1.addMouseMotionListener(new MouseMotionListener() {
 
-			@Override
-			public void mouseDragged(MouseEvent e) {
-				// TODO Auto-generated method stub
-//				   int x = e.getX();
-//				   int y = e.getY();
-				  ingrePearl1.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
-				  if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>450&& e.getLocationOnScreen().y - mouseClickedLocation.y>200&& e.getLocationOnScreen().y - mouseClickedLocation.y<400) {
-					  Play("Coin.wav"); 
-						a2=1;
-				
-					}
-			}
+    			@Override
+    			public void mouseDragged(MouseEvent e) {
+    				// TODO Auto-generated method stub
+//    				   int x = e.getX();
+//    				   int y = e.getY();
+    				ingreFruit1.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
+    			
+    			if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>420&& e.getLocationOnScreen().y - mouseClickedLocation.y>100&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
+    				Play("Coin.wav"); 
+    				 ImageIcon manystraw=new ImageIcon("manystraw.png");
+    				 ingreFruit1.setIcon(manystraw);
+    				a=1;
+    				System.out.println("a:"+a);
+    			}
+    			else {
+    				ingreFruit1.setIcon(ingreFruits1);
+    			  }
+    				 
+    			}
 
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		
-		ImageIcon ingrePearls2 = new ImageIcon("ingrePearl2.png");
-		ingrePearl2 = new JLabel(ingrePearls2);
-		ingrePearl2.setBounds(260, 760, 140, 140);
-		add(ingrePearl2);
-		ingrePearl2.addMouseMotionListener(new MouseMotionListener() {
-
-			@Override
-			public void mouseDragged(MouseEvent e) {
-				// TODO Auto-generated method stub
-//				   int x = e.getX();
-//				   int y = e.getY();
-				  ingrePearl2.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
-				  if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>450&& e.getLocationOnScreen().y - mouseClickedLocation.y>200&& e.getLocationOnScreen().y - mouseClickedLocation.y<400) {
-					  Play("Coin.wav"); 
-						b2=1;
-				
-					}
-			}
-
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		
-		ImageIcon ingrePearls3 = new ImageIcon("ingrePearl3.png");
-		ingrePearl3 = new JLabel(ingrePearls3);
-		ingrePearl3.setBounds(440, 760, 140, 140);
-		add(ingrePearl3);
-		ingrePearl3.addMouseMotionListener(new MouseMotionListener() {
-
-			@Override
-			public void mouseDragged(MouseEvent e) {
-				// TODO Auto-generated method stub
-//				   int x = e.getX();
-//				   int y = e.getY();
-				  ingrePearl3.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
-				  if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>450&& e.getLocationOnScreen().y - mouseClickedLocation.y>200&& e.getLocationOnScreen().y - mouseClickedLocation.y<400) {
-					  Play("Coin.wav"); 
-						c2=1;
-				
-					}
-			}
-
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		
-		ImageIcon ingreFruits1 = new ImageIcon("ingreFruit1.png");
-		ingreFruit1 = new JLabel(ingreFruits1);
-		ingreFruit1.setBounds(620, 710, 150, 123);
-		add(ingreFruit1);
-		ingreFruit1.addMouseMotionListener(new MouseMotionListener() {
-
-			@Override
-			public void mouseDragged(MouseEvent e) {
-				// TODO Auto-generated method stub
-//				   int x = e.getX();
-//				   int y = e.getY();
-				ingreFruit1.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
-			
-			if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>450&& e.getLocationOnScreen().y - mouseClickedLocation.y>200&& e.getLocationOnScreen().y - mouseClickedLocation.y<400) {
-				Play("Coin.wav"); 
-				a=1;
-				System.out.println("a:"+a);
-			}
-				 
-			}
-
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		
+    			@Override
+    			public void mouseMoved(MouseEvent e) {
+    				// TODO Auto-generated method stub
+    				
+    			}
+    			
+    		});
 		ImageIcon ingreFruits2 = new ImageIcon("painapple.png");
 		ingreFruit2 = new JLabel(ingreFruits2);
 		ingreFruit2.setBounds(830, 685, 150, 200);
@@ -394,15 +462,20 @@ public class Game3 extends JPanel implements ActionListener{
 //				   int x = e.getX();
 //				   int y = e.getY();
 				ingreFruit2.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
-				if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>450&& e.getLocationOnScreen().y - mouseClickedLocation.y>200&& e.getLocationOnScreen().y - mouseClickedLocation.y<400) {
+				if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>420&& e.getLocationOnScreen().y - mouseClickedLocation.y>40&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
 //					ImageIcon cup = new ImageIcon("st.png");
 //					JLabel cup1 = new JLabel(cup);
 //					cup1.setBounds(480,100,800,800);
 //					add(cup1);
-					Play("Coin.wav"); 
+					Play("Coin.wav");
+					ImageIcon manypine=new ImageIcon("manypine.png");
+					ingreFruit2.setIcon(manypine);
 					b=1;
 					System.out.println("b:"+b);
 				}
+				else {
+					ingreFruit2.setIcon(ingreFruits2);
+    			  }
 		
 			}
 
@@ -426,15 +499,20 @@ public class Game3 extends JPanel implements ActionListener{
 //				   int x = e.getX();
 //				   int y = e.getY();
 				ingreFruit3.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
-				if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>450&& e.getLocationOnScreen().y - mouseClickedLocation.y>200&& e.getLocationOnScreen().y - mouseClickedLocation.y<400) {
+				if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>360&& e.getLocationOnScreen().y - mouseClickedLocation.y>40&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
 //					ImageIcon cup = new ImageIcon("st.png");
 //					JLabel cup1 = new JLabel(cup);
 //					cup1.setBounds(480,100,800,800);
 //					add(cup1);
 					Play("Coin.wav"); 
+					ImageIcon manyoran=new ImageIcon("manyoran.png");
+					ingreFruit3.setIcon(manyoran);
 					c=1;
 					System.out.println("c:"+c);
 				}
+				else {
+					ingreFruit3.setIcon(ingreFruits3);
+    			  }
 			}
 
 			@Override
@@ -489,15 +567,20 @@ public class Game3 extends JPanel implements ActionListener{
 //				   int x = e.getX();
 //				   int y = e.getY();
 				ingreJuice.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
-				if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>450&& e.getLocationOnScreen().y - mouseClickedLocation.y>200&& e.getLocationOnScreen().y - mouseClickedLocation.y<400) {
+				if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>370&& e.getLocationOnScreen().y - mouseClickedLocation.y>40&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
 //					ImageIcon cup = new ImageIcon("st.png");
 //					JLabel cup1 = new JLabel(cup);
 //					cup1.setBounds(480,100,800,800);
 //					add(cup1);
 					Play("Coin.wav"); 
+					ImageIcon yogert=new ImageIcon("yogert.png");
+					ingreJuice.setIcon(yogert);
 					d1=1;
 					System.out.println("a1:"+a1);
 				}
+				else {
+					ingreJuice.setIcon(ingreJuices);
+				  }
 			}
 
 			@Override
@@ -556,15 +639,20 @@ public class Game3 extends JPanel implements ActionListener{
 //				   int x = e.getX();
 //				   int y = e.getY();
 				ingreJuice3.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
-				if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>450&& e.getLocationOnScreen().y - mouseClickedLocation.y>200&& e.getLocationOnScreen().y - mouseClickedLocation.y<400) {
+				if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>400&& e.getLocationOnScreen().y - mouseClickedLocation.y>40&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
 //					ImageIcon cup = new ImageIcon("st.png");
 //					JLabel cup1 = new JLabel(cup);
 //					cup1.setBounds(480,100,800,800);
 //					add(cup1);
 					Play("Coin.wav"); 
+					ImageIcon milk=new ImageIcon("milk.png");
+					ingreJuice3.setIcon(milk);
 					b1=1;
 					System.out.println("b1:"+b1);
 				}
+				else {
+					ingreJuice3.setIcon(ingreJuices3);
+				  }
 			}
 
 			@Override
@@ -709,22 +797,6 @@ public class Game3 extends JPanel implements ActionListener{
 		
 			System.out.println(oh);
 			
-				if(oh==1) {
-					ImageIcon middle = new ImageIcon("good.jpg");
-					JLabel two = new JLabel(middle); 
-					two.setBounds(270, 100, 1500,768);
-					add(two);
-				}
-				else if(oh==0) {
-			
-				 ImageIcon middle = new ImageIcon("x.png");
-					JLabel two = new JLabel(middle); 
-					two.setBounds(270, 100, 1366,768);
-					add(two);
-				
-			}
-		
-			
 			ingrePearl1.setBounds(70, 760, 140, 140);
 			ingrePearl2.setBounds(260, 760, 140, 140);
 			ingrePearl3.setBounds(440, 760, 140, 140);
@@ -753,17 +825,19 @@ public class Game3 extends JPanel implements ActionListener{
 			ingreJuice1.setBounds(1140, 795, 150, 84);
 			
 			if(oh==1) {
-				ImageIcon middle = new ImageIcon("good.jpg");
-				JLabel two = new JLabel(middle); 
-				two.setBounds(270, 100, 1500,768);
-				add(two);
+				
+				two.setVisible(true);
+				replay_btn.setVisible(true);
+				exit_btn.setVisible(true);
+
+				
 			}
 			else if(oh==0) {
-		
-			 ImageIcon middle = new ImageIcon("x.png");
-				JLabel two = new JLabel(middle); 
-				two.setBounds(270, 100, 1366,768);
-				add(two);
+
+				
+				two2.setVisible(true);
+				replay_btn.setVisible(true);
+				exit_btn.setVisible(true);
 			
 		}
 	

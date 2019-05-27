@@ -54,6 +54,11 @@ public class IngreGame extends JPanel{
 	
 	
 	IngreGame(Main_frame frame){
+		x_btn.setBorderPainted(false);
+	    x_btn.setContentAreaFilled(false);
+	    x_btn.setBounds(1360, 250, 32, 32);
+	    add(x_btn);
+	    
 		setLayout(null);
 		skip_btn.setBorderPainted(false);
 		skip_btn.setContentAreaFilled(false);
@@ -208,11 +213,7 @@ public class IngreGame extends JPanel{
 		}
 	});
 	
-	x_btn.setBorderPainted(false);
-    x_btn.setContentAreaFilled(false);
-    x_btn.setBounds(1690, 10, 32, 32);
-    add(x_btn);
-    
+
     x_btn.addActionListener(new ActionListener() {
 		
 		@Override
