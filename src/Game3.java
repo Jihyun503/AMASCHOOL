@@ -25,8 +25,6 @@ import javax.swing.TransferHandler;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-
-
 public class Game3 extends JPanel implements ActionListener{
 	public void Play(String fileName)
     {
@@ -47,14 +45,15 @@ public class Game3 extends JPanel implements ActionListener{
 	Image main_bg = mainbg.getImage();
 
 	JLabel ingrePearl1, ingrePearl2, ingrePearl3;
-	JLabel ingreJuice,ingreJuice1, ingreJuice2, ingreJuice3, ingreJuice4;
+	JLabel ingreJuice,ingreJuice1, ingreJuice2, ingreJuice3, ingreJuice4,ingreJuice1_1,ingreJuice1_2;
 	JLabel ingreFruit1, ingreFruit2, ingreFruit3, ingreFruit4;
-	ImageIcon ingrePearls1,ingrePearls2,ingrePearls3,ingreFruits1,ingreFruits2,ingreFruits3,ingreFruits4,ingreJuices1,ingreJuices3,ingreJuices4;
-	JLabel cup;
+	ImageIcon ingrePearls1,ingrePearls2,ingrePearls3,ingreFruits1,ingreFruits2,ingreFruits3,ingreFruits4,ingreJuices1,ingreJuices3,ingreJuices4,ingreJuices1_1,ingreJuices1_2;
+	JLabel cup,st2;
 	JLabel pic1,pic2,pic3;
 	int a,b,c,d; //과일
 	int a1,b1,c1,d1;//음료
 	int a2,b2,c2;//펄
+	int ii1,ii2,ii3;//얼음
 	int su,oh,fa,chk; //chk은 슬라이더 값 받아오는 용도
 	int ice;
 	//private JSlider slider1 ;
@@ -79,6 +78,9 @@ public class Game3 extends JPanel implements ActionListener{
 	ImageIcon middle = new ImageIcon("good.png");
 	JLabel two = new JLabel(middle); 
 	
+	ImageIcon reset = new ImageIcon("reset.png");
+    JButton reset_btn = new JButton(reset);
+    
 	ImageIcon exit = new ImageIcon("exit.png");
     JButton exit_btn = new JButton(exit);
 	
@@ -93,6 +95,37 @@ public class Game3 extends JPanel implements ActionListener{
 	
 	Timer hTimer = new Timer(1000, this);//1초씩 증가
 	int hTime = 3;//초 카운트
+	
+	ImageIcon tapi=new ImageIcon("tatatwo.png");
+	JLabel tapi1 = new JLabel(tapi);
+	ImageIcon coco=new ImageIcon("cocoptwo.png");
+	JLabel coco1 = new JLabel(coco);
+	ImageIcon jelly=new ImageIcon("jellytwo.png");
+	JLabel jelly1 = new JLabel(jelly);
+	ImageIcon st=new ImageIcon("strawtwo.png");
+	JLabel st1 = new JLabel(st);
+	ImageIcon pine=new ImageIcon("pinetwo.png");
+	JLabel pine1 = new JLabel(pine);
+	ImageIcon oran=new ImageIcon("orantwo.png");
+	JLabel oran1 = new JLabel(oran);
+	ImageIcon yougert=new ImageIcon("yogert.png");
+	JLabel yougert1 = new JLabel(yougert);
+	ImageIcon milk=new ImageIcon("milk.png");
+	JLabel milk1 = new JLabel(milk);
+	ImageIcon koko=new ImageIcon("kokotwo.png");
+	JLabel koko1 = new JLabel(koko);
+	ImageIcon tea=new ImageIcon("teatwo.png");
+	JLabel tea1 = new JLabel(tea);
+	ImageIcon hh=new ImageIcon("htwo.png");
+	JLabel h1 = new JLabel(hh);
+	
+	ImageIcon i1=new ImageIcon("ice.png");
+	JLabel ice1 = new JLabel(i1);
+	ImageIcon i2=new ImageIcon("ice.png");
+	JLabel ice2 = new JLabel(i2);
+	ImageIcon i3=new ImageIcon("ice.png");
+	JLabel ice3 = new JLabel(i3);
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(mTimer == arg0.getSource()){
@@ -333,12 +366,11 @@ public class Game3 extends JPanel implements ActionListener{
       				  if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>400&& e.getLocationOnScreen().y - mouseClickedLocation.y>100&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
       					  Play("Coin.wav"); 
       					 remove(ingrePearl1);
- 						ImageIcon tapi=new ImageIcon("tatatwo.png");
- 						JLabel tapi1 = new JLabel(tapi);
  					
  						tapi1.setBounds(424,114,535,428);
  						add(tapi1);
       						a2=1;
+      						setComponentZOrder(tapi1,0);
       				
       					}
       				  else {
@@ -369,12 +401,11 @@ public class Game3 extends JPanel implements ActionListener{
       				  if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>420&& e.getLocationOnScreen().y - mouseClickedLocation.y>100&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
       					  Play("Coin.wav"); 
       					 remove(ingrePearl2);
- 						ImageIcon coco=new ImageIcon("cocoptwo.png");
- 						JLabel coco1 = new JLabel(coco);
- 					
+
  						coco1.setBounds(410,114,535,428);
  						add(coco1);
       						b2=1;
+      						setComponentZOrder(coco1,0);
       				
       					}
       				  else {
@@ -406,12 +437,11 @@ public class Game3 extends JPanel implements ActionListener{
       				  if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>420&& e.getLocationOnScreen().y - mouseClickedLocation.y>100&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
       					  Play("Coin.wav"); 
       					 remove(ingrePearl3);
- 						ImageIcon jelly=new ImageIcon("jellytwo.png");
- 						JLabel jelly1 = new JLabel(jelly);
- 					
+
  						jelly1.setBounds(500,200,350,250);
  						add(jelly1);
       						c2=1;
+      						setComponentZOrder(jelly1,0);
       				
       					}
       				  else {
@@ -444,11 +474,17 @@ public class Game3 extends JPanel implements ActionListener{
     			if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>420&& e.getLocationOnScreen().y - mouseClickedLocation.y>100&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
     				Play("Coin.wav"); 
     				remove(ingreFruit1);
-    				ImageIcon st=new ImageIcon("strawtwo.png");
-    				JLabel st1 = new JLabel(st);
     			
-    				st1.setBounds(440,140,465,344);
-    				add( st1);
+    				st1.setBounds(390,70,465,344);
+    				add(st1);
+    				setComponentZOrder(st1,1);
+    				
+    				ImageIcon st1=new ImageIcon("strawtwo.png");
+    				st2 = new JLabel(st1);
+    				
+    				st2.setBounds(535,220,465,344);
+    				add(st2);
+    				setComponentZOrder(st2,1);
     				a=1;
     				System.out.println("a:"+a);
     			}
@@ -484,12 +520,11 @@ public class Game3 extends JPanel implements ActionListener{
 //					add(cup1);
 					Play("Coin.wav");
 					remove(ingreFruit2);
-					ImageIcon pine=new ImageIcon("pinetwo.png");
-					JLabel pine1 = new JLabel(pine);
-				
+
 					pine1.setBounds(460,110,450,400);
 					add(pine1);
 					b=1;
+					setComponentZOrder(pine1,1);
 					System.out.println("b:"+b);
 				}
 				else {
@@ -531,6 +566,7 @@ public class Game3 extends JPanel implements ActionListener{
 					oran1.setBounds(460,130,450,400);
 					add(oran1);
 					c=1;
+					setComponentZOrder(oran1,1);
 					System.out.println("c:"+c);
 				}
 				else {
@@ -564,9 +600,17 @@ public class Game3 extends JPanel implements ActionListener{
 //					cup1.setBounds(480,100,800,800);
 //					add(cup1);
 					Play("Coin.wav"); 
+					remove(ingreFruit4);
+					
+					koko1.setBounds(530,130,347,371);
+					add(koko1);
 					d=1;
+					setComponentZOrder(koko1,1);
 					System.out.println("d:"+d);
 				}
+				else {
+					ingreFruit4.setIcon(ingreFruits4);
+				  }
 			}
 
 			@Override
@@ -577,6 +621,126 @@ public class Game3 extends JPanel implements ActionListener{
 			
 		});
 
+
+		ingreJuices1 = new ImageIcon("ingreJuice1.png");
+		ingreJuice1 = new JLabel(ingreJuices1);
+		ingreJuice1.setBounds(1140, 795, 150, 84);
+		add(ingreJuice1);
+		ingreJuice1.addMouseMotionListener(new MouseMotionListener() {
+
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				// TODO Auto-generated method stub
+//				   int x = e.getX();
+//				   int y = e.getY();
+				ingreJuice1.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
+				if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>370&& e.getLocationOnScreen().y - mouseClickedLocation.y>40&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
+//					ImageIcon cup = new ImageIcon("st.png");
+//					JLabel cup1 = new JLabel(cup);
+//					cup1.setBounds(480,100,800,800);
+//					add(cup1);
+					Play("Coin.wav"); 
+					remove(ingreJuice1);
+					
+				
+					ice1.setBounds(500,300,181,124);
+					add(ice1);
+					setComponentZOrder(ice1,3);
+					ii1=1;
+					System.out.println("ice:"+ii1);
+				}
+				else {
+					ingreJuice1.setIcon(ingreJuices1);
+				  }
+			}
+
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		ingreJuices1_1 = new ImageIcon("ingreJuice1.png");
+		ingreJuice1_1 = new JLabel(ingreJuices1_1);
+		ingreJuice1_1.setBounds(1140, 795, 150, 84);
+		add(ingreJuice1_1);
+		ingreJuice1_1.addMouseMotionListener(new MouseMotionListener() {
+
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				// TODO Auto-generated method stub
+//				   int x = e.getX();
+//				   int y = e.getY();
+				ingreJuice1_1.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
+				if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>370&& e.getLocationOnScreen().y - mouseClickedLocation.y>40&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
+//					ImageIcon cup = new ImageIcon("st.png");
+//					JLabel cup1 = new JLabel(cup);
+//					cup1.setBounds(480,100,800,800);
+//					add(cup1);
+					Play("Coin.wav"); 
+					remove(ingreJuice1_1);
+					
+				
+					ice2.setBounds(700,300,181,124);
+					add(ice2);
+					setComponentZOrder(ice2,3);
+					ii2=1;
+					System.out.println("ice:"+ii2);
+				}
+				else {
+					ingreJuice1_1.setIcon(ingreJuices1_1);
+				  }
+			}
+
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		ingreJuices1_2 = new ImageIcon("ingreJuice1.png");
+		ingreJuice1_2 = new JLabel(ingreJuices1_2);
+		ingreJuice1_2.setBounds(1140, 795, 150, 84);
+		add(ingreJuice1_2);
+		ingreJuice1_2.addMouseMotionListener(new MouseMotionListener() {
+
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				// TODO Auto-generated method stub
+//				   int x = e.getX();
+//				   int y = e.getY();
+				ingreJuice1_2.setLocation(e.getLocationOnScreen().x - mouseClickedLocation.x, e.getLocationOnScreen().y - mouseClickedLocation.y); // 위치 조정
+				if(e.getLocationOnScreen().x - mouseClickedLocation.x<850 && e.getLocationOnScreen().x - mouseClickedLocation.x>370&& e.getLocationOnScreen().y - mouseClickedLocation.y>40&& e.getLocationOnScreen().y - mouseClickedLocation.y<450) {
+//					ImageIcon cup = new ImageIcon("st.png");
+//					JLabel cup1 = new JLabel(cup);
+//					cup1.setBounds(480,100,800,800);
+//					add(cup1);
+					Play("Coin.wav"); 
+					remove(ingreJuice1_2);
+					
+				
+					ice3.setBounds(600,150,181,124);
+					add(ice3);
+					setComponentZOrder(ice3,3);
+					ii3=1;
+					System.out.println("ice:"+ii3);
+				}
+				else {
+					ingreJuice1_2.setIcon(ingreJuices1_2);
+				  }
+			}
+
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		ImageIcon ingreJuices = new ImageIcon("ingreJuice2.png");
 		ingreJuice = new JLabel(ingreJuices);
@@ -597,12 +761,11 @@ public class Game3 extends JPanel implements ActionListener{
 //					add(cup1);
 					Play("Coin.wav"); 
 					remove(ingreJuice);
-					ImageIcon yougert=new ImageIcon("yogert.png");
-					JLabel yougert1 = new JLabel(yougert);
-				
+
 					yougert1.setBounds(424,114,535,428);
 					add(yougert1);
 					d1=1;
+					setComponentZOrder(yougert1,2);
 					System.out.println("a1:"+a1);
 				}
 				else {
@@ -617,12 +780,6 @@ public class Game3 extends JPanel implements ActionListener{
 			}
 			
 		});
-		
-		ImageIcon ingreJuices1 = new ImageIcon("ingreJuice1.png");
-		ingreJuice1 = new JLabel(ingreJuices1);
-		ingreJuice1.setBounds(1140, 795, 150, 84);
-		add(ingreJuice1);
-		
 		
 		ImageIcon ingreJuices2 = new ImageIcon("tiback.png");
 		ingreJuice2 = new JLabel(ingreJuices2);
@@ -642,9 +799,16 @@ public class Game3 extends JPanel implements ActionListener{
 //					cup1.setBounds(480,100,800,800);
 //					add(cup1);
 					Play("Coin.wav"); 
+					remove(ingreJuice2);
+
+					tea1.setBounds(440,130,500,374);
+					add(tea1);
 					a1=1;
 					System.out.println("a1:"+a1);
 				}
+				else {
+					ingreJuice2.setIcon(ingreJuices2);
+				  }
 			}
 
 			@Override
@@ -673,12 +837,11 @@ public class Game3 extends JPanel implements ActionListener{
 //					add(cup1);
 					Play("Coin.wav"); 
 					remove(ingreJuice3);
-					ImageIcon milk=new ImageIcon("milk.png");
-					JLabel milk1 = new JLabel(milk);
-				
+
 					milk1.setBounds(424,114,535,428);
 					add(milk1);
 					b1=1;
+					setComponentZOrder(milk1,2);
 					System.out.println("b1:"+b1);
 				}
 				else {
@@ -696,7 +859,7 @@ public class Game3 extends JPanel implements ActionListener{
 
 		ImageIcon ingreJuices4 = new ImageIcon("h.png");
 		ingreJuice4 = new JLabel(ingreJuices4);
-		ingreJuice4.setBounds(1680, 700, 150, 287);
+		ingreJuice4.setBounds(1670, 800, 233, 120);
 		add(ingreJuice4);
 		ingreJuice4.addMouseMotionListener(new MouseMotionListener() {
 
@@ -712,6 +875,10 @@ public class Game3 extends JPanel implements ActionListener{
 //					cup1.setBounds(480,100,800,800);
 //					add(cup1);
 					Play("Coin.wav"); 
+					remove(ingreJuice4);
+
+					h1.setBounds(490,200,400,206);
+					add(h1);
 					c1=1;
 					System.out.println("c1:"+c1);
 				}
@@ -738,6 +905,110 @@ public class Game3 extends JPanel implements ActionListener{
 		add(pic3);
 		
 		
+		  reset_btn.setBorderPainted(false);
+		    reset_btn.setContentAreaFilled(false);
+		    reset_btn.setBounds(10, 620, 134, 51);
+		    add(reset_btn);
+		   
+		    reset_btn.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					reset_btn.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								if(a2==1) {
+									remove(tapi1);
+									ingrePearl1.setBounds(70, 760, 140, 140);
+									add(ingrePearl1);
+									a2=0;
+									}
+								if(b2==1) {
+									remove(coco1);
+									ingrePearl2.setBounds(260, 760, 140, 140);
+									add(ingrePearl2);
+									b2=0;	
+								}
+								if(c2==1) {
+									remove(jelly1);
+									ingrePearl3.setBounds(440, 760, 140, 140);
+									add(ingrePearl3);
+									c2=0;
+									}
+							if(a==1) {
+									remove(st1);remove(st2);
+									ingreFruit1.setBounds(650, 710, 150, 135);
+									add(ingreFruit1);
+									a=0;	
+								}
+							if(a1==1) {
+									remove(tea1);
+									ingreJuice2.setBounds(1200, 750, 250, 193);
+									add(ingreJuice2);
+									a1=0;	
+								}
+							
+							if(b==1) {
+								remove(pine1);
+								ingreFruit2.setBounds(830, 685, 150, 200);
+								add(ingreFruit2);
+								b=0;	
+							}
+							if(c==1) {
+								remove(oran1);
+								ingreFruit3.setBounds(620, 850, 150, 97);
+								add(ingreFruit3);
+								c=0;
+							}
+							if(d==1) {
+								remove(koko1);
+								ingreFruit4.setBounds(830, 880, 150, 129);
+								add(ingreFruit4);
+								d=0;
+							}
+							if(d1==1) {
+								remove(yougert1);
+								ingreJuice.setBounds(970, 750, 200, 193);
+								add(ingreJuice);
+								d1=0;
+							}
+							
+							if(b1==1) {
+								remove(milk1);
+								ingreJuice3.setBounds(1490, 750, 150, 189);
+								add(ingreJuice3);
+								b1=0;	
+							}
+							if(c1==1) {
+							remove(h1);
+							ingreJuice4.setBounds(1680, 700, 150, 287);
+							add(ingreJuice4);
+							c1=0;
+							}		
+							//얼음
+							if(ii1==1) {
+								remove(ice1);
+								ingreJuice1.setBounds(1140, 795, 150, 84);
+								add(ingreJuice1);
+								ii1=0;
+							}
+							if(ii2==1) {
+								remove(ice2);
+								ingreJuice1_1.setBounds(1140, 795, 150, 84);
+								add(ingreJuice1_1);
+								ii2=0;
+							}
+							if(ii3==1) {
+								remove(ice3);
+								ingreJuice1_2.setBounds(1140, 795, 150, 84);
+								add(ingreJuice1_2);
+								ii3=0;
+							}
+							}
+						});
+				}
+			});
+	
 	
 		ingrePearl1.addMouseListener(m1);
 		ingrePearl2.addMouseListener(m1);
@@ -746,15 +1017,12 @@ public class Game3 extends JPanel implements ActionListener{
 		ingreFruit2.addMouseListener(m1);
 		ingreFruit3.addMouseListener(m1);
 		ingreFruit4.addMouseListener(m1);
-		ingreJuice1.addMouseListener(m2);
+		ingreJuice1.addMouseListener(m1);
+		ingreJuice1_1.addMouseListener(m1);
+		ingreJuice1_2.addMouseListener(m1);
 		ingreJuice2.addMouseListener(m1);
 		ingreJuice3.addMouseListener(m1);
 		ingreJuice4.addMouseListener(m1);
-		pic1.setTransferHandler(new TransferHandler("icon"));
-		pic2.setTransferHandler(new TransferHandler("icon"));
-		pic3.setTransferHandler(new TransferHandler("icon"));
-		ingreJuice1.setTransferHandler(new TransferHandler("icon"));
-		
 		
 		JLabel order = new JLabel("주문서");
 		order.setBounds(1600, 80, 200, 200);
