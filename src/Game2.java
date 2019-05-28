@@ -71,21 +71,9 @@ public class Game2 extends JPanel implements ActionListener{
 	
 	JLabel text = new JLabel();
 	Random r = new Random();
-
-	ImageIcon replay = new ImageIcon("replay.png");
-    JButton replay_btn = new JButton(replay);
-    
-	ImageIcon middle = new ImageIcon("good.png");
-	JLabel two = new JLabel(middle); 
 	
 	ImageIcon reset = new ImageIcon("reset.png");
     JButton reset_btn = new JButton(reset);
-    
-	ImageIcon exit = new ImageIcon("exit.png");
-    JButton exit_btn = new JButton(exit);
-	
-    ImageIcon middle2 = new ImageIcon("x.png");
-	JLabel two2 = new JLabel(middle2); 
 
 	Timer mTimer = new Timer(1000, this);//1초씩 증가
 	int mTime = 40;//초 카운트
@@ -134,10 +122,7 @@ public class Game2 extends JPanel implements ActionListener{
 				mTimer.stop();
 				 int num = 0;
 				 if(num==0) {
-					 ImageIcon middle = new ImageIcon("x.png");
-						JLabel two = new JLabel(middle); 
-						two.setBounds(270, 100, 1366,768);
-						add(two);
+					 
 				 }
 			}
 			repaint();//컨트롤 변화
@@ -272,46 +257,7 @@ public class Game2 extends JPanel implements ActionListener{
 				mTimer.start();
 			}
 		});
-		//ImageIcon recipe = new ImageIcon("recipe.png");
-		//JLabel recipe1 = new JLabel(recipe); 
-		//recipe1.setBounds(350, 200, 1366,768);
-		//add(recipe1);
-  
-	    replay_btn.setBorderPainted(false);
-	    replay_btn.setContentAreaFilled(false);
-	    replay_btn.setBounds(1100, 700, 169, 63);
-		add(replay_btn);
-		
-		replay_btn.addActionListener(new ActionListener() {		
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				frame.change("select");
-			}
-		});
 
-	    exit_btn.setBorderPainted(false);
-	    exit_btn.setContentAreaFilled(false);
-	    exit_btn.setBounds(1300, 720, 107, 40);
-		add(exit_btn);
-		
-		exit_btn.addActionListener(new ActionListener() {		
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				frame.change("index");
-			}
-		});
-		
-		replay_btn.setVisible(false);
-		exit_btn.setVisible(false);
-	    
-	    
-		two.setBounds(270, 100, 1000,579);
-		add(two);
-		two.setVisible(false);
-		
-		two2.setBounds(270, 100, 1366,768);
-		add(two2);
-		two2.setVisible(false);
 	    
       ImageIcon hint = new ImageIcon("hint.png");
 	    JButton Hint = new JButton(hint);
@@ -1045,25 +991,8 @@ public class Game2 extends JPanel implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ice=pic1.getIconTextGap()+pic2.getIconTextGap()+pic3.getIconTextGap();
 			
-			if(pic1.getIcon()!=null) {
-				chk1=1;
-				System.out.println("chk1이 맞습니다");
-			}
-			if(pic2.getIcon()!=null) {
-				chk2=1;
-				System.out.println("chk2이 맞습니다");
-			}
-			if(pic3.getIcon()!=null) {
-				chk3=1;
-				System.out.println("chk3이 맞습니다");
-			}
-			System.out.println("chk합니다"+chk1);
-			System.out.println("chk합니다"+chk2);
-			System.out.println("chk합니다"+chk3);
-			
-			chkresult=chk1+chk2+chk3;
+			chkresult=ii1+ii2+ii3;
 			
 			System.out.println("chkre"+chkresult);
 		
@@ -1105,18 +1034,14 @@ public class Game2 extends JPanel implements ActionListener{
 			
 			if(oh==1) {
 				
-				two.setVisible(true);
-				replay_btn.setVisible(true);
-				exit_btn.setVisible(true);
+				frame.change("result");
 
 				
 			}
 			else if(oh==0) {
 
 				
-				two2.setVisible(true);
-				replay_btn.setVisible(true);
-				exit_btn.setVisible(true);
+				frame.change("result2");
 			
 		}
 

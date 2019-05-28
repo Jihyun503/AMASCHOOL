@@ -8,9 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Result extends JPanel{
+public class Result2 extends JPanel{
 	
-	ImageIcon goodbg = new ImageIcon("good.png");
+	ImageIcon goodbg = new ImageIcon("x.png");
     Image good_bg = goodbg.getImage();
     
     ImageIcon replay = new ImageIcon("replay.png");
@@ -19,8 +19,8 @@ public class Result extends JPanel{
     ImageIcon exit = new ImageIcon("exit.png");
     JButton exit_btn = new JButton(exit);
 	
-	Result(Main_frame frame){
-		System.out.println("성공했습니다");
+	Result2(Main_frame frame){
+		System.out.println("실패했습니다");
 		replay_btn.setBorderPainted(false);
 	    replay_btn.setContentAreaFilled(false);
 	    replay_btn.setBounds(1100, 700, 169, 63);

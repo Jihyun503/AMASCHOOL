@@ -16,6 +16,7 @@ class Main_frame extends JFrame{
 	Game3 game3;
 	Select select;
 	Result result;
+	Result2 result2;
 	Test test;
 	IngreGame ingregame;
 	
@@ -62,6 +63,13 @@ class Main_frame extends JFrame{
     		this.result = new Result(this);
     		getContentPane().removeAll();
 			getContentPane().add(result);
+			revalidate();
+			repaint();
+    	}
+		if(PanelName.equals("result2")) {
+    		this.result2 = new Result2(this);
+    		getContentPane().removeAll();
+			getContentPane().add(result2);
 			revalidate();
 			repaint();
     	}
