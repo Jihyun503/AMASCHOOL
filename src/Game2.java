@@ -69,6 +69,12 @@ public class Game2 extends JPanel implements ActionListener{
 
 	String[] menu = new String[7];
 	
+	ImageIcon replay = new ImageIcon("replay.png");
+	JButton replay_btn = new JButton(replay);
+
+	ImageIcon exit = new ImageIcon("exit.png");
+	JButton exit_btn = new JButton(exit);
+	
 	JLabel text = new JLabel();
 	Random r = new Random();
 	
@@ -122,7 +128,21 @@ public class Game2 extends JPanel implements ActionListener{
 				mTimer.stop();
 				 int num = 0;
 				 if(num==0) {
-					 
+					 removeAll();
+					 ImageIcon mainbg1 = new ImageIcon("x.png");
+					 main_bg = mainbg1.getImage();
+					
+					    replay_btn.setBorderPainted(false);
+					    replay_btn.setContentAreaFilled(false);
+					    replay_btn.setBounds(1100, 700, 169, 63);
+						add(replay_btn);
+						
+						
+					    exit_btn.setBorderPainted(false);
+					    exit_btn.setContentAreaFilled(false);
+					    exit_btn.setBounds(1300, 720, 107, 40);
+						add(exit_btn);
+						
 				 }
 			}
 			repaint();//컨트롤 변화
@@ -153,7 +173,20 @@ public class Game2 extends JPanel implements ActionListener{
 	
 	public Game2(Main_frame frame) {
 		
-	    
+		replay_btn.addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				frame.change("select");
+			}
+		});
+		exit_btn.addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				frame.change("index");
+			}
+		});
 	    
 	   
 		
