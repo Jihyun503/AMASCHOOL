@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.imageio.ImageIO;
 import java.io.*;
 import java.awt.image.BufferedImage;
-
+//
 class fra {
     public static void main(String args[]) {
         frame f = new frame();
