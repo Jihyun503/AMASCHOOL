@@ -1,4 +1,4 @@
-import java.awt.BorderLayout;
+﻿import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -312,6 +312,8 @@ public class Game3 extends JPanel implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				add(X_btn2);
 				add(hint_recipe);
+				setComponentZOrder(hint_recipe,0);
+				setComponentZOrder(X_btn2,0);
 				hTimer.start();
 				
 				check++;
@@ -351,7 +353,7 @@ public class Game3 extends JPanel implements ActionListener{
  						tapi1.setBounds(424,114,535,428);
  						add(tapi1);
       						a2=1;
-      						setComponentZOrder(tapi1,0);
+      						setComponentZOrder(tapi1,1);
       				
       					}
       				  else {
@@ -386,7 +388,7 @@ public class Game3 extends JPanel implements ActionListener{
  						coco1.setBounds(410,114,535,428);
  						add(coco1);
       						b2=1;
-      						setComponentZOrder(coco1,0);
+      						setComponentZOrder(coco1,1);
       				
       					}
       				  else {
@@ -422,7 +424,7 @@ public class Game3 extends JPanel implements ActionListener{
  						jelly1.setBounds(500,200,350,250);
  						add(jelly1);
       						c2=1;
-      						setComponentZOrder(jelly1,0);
+      						setComponentZOrder(jelly1,1);
       				
       					}
       				  else {
@@ -458,14 +460,14 @@ public class Game3 extends JPanel implements ActionListener{
     			
     				st1.setBounds(390,70,465,344);
     				add(st1);
-    				setComponentZOrder(st1,1);
+    				setComponentZOrder(st1,2);
     				
     				ImageIcon st1=new ImageIcon("strawtwo.png");
     				st2 = new JLabel(st1);
     				
     				st2.setBounds(535,220,465,344);
     				add(st2);
-    				setComponentZOrder(st2,1);
+    				setComponentZOrder(st2,2);
     				a=1;
     				System.out.println("a:"+a);
     			}
@@ -505,7 +507,7 @@ public class Game3 extends JPanel implements ActionListener{
 					pine1.setBounds(460,110,450,400);
 					add(pine1);
 					b=1;
-					setComponentZOrder(pine1,1);
+					setComponentZOrder(pine1,2);
 					System.out.println("b:"+b);
 				}
 				else {
@@ -547,7 +549,7 @@ public class Game3 extends JPanel implements ActionListener{
 					oran1.setBounds(460,130,450,400);
 					add(oran1);
 					c=1;
-					setComponentZOrder(oran1,1);
+					setComponentZOrder(oran1,2);
 					System.out.println("c:"+c);
 				}
 				else {
@@ -586,7 +588,7 @@ public class Game3 extends JPanel implements ActionListener{
 					koko1.setBounds(530,130,347,371);
 					add(koko1);
 					d=1;
-					setComponentZOrder(koko1,1);
+					setComponentZOrder(koko1,2);
 					System.out.println("d:"+d);
 				}
 				else {
@@ -626,7 +628,7 @@ public class Game3 extends JPanel implements ActionListener{
 				
 					ice1.setBounds(500,300,181,124);
 					add(ice1);
-					setComponentZOrder(ice1,3);
+					setComponentZOrder(ice1,4);
 					ii1=1;
 					System.out.println("ice:"+ii1);
 				}
@@ -666,7 +668,7 @@ public class Game3 extends JPanel implements ActionListener{
 				
 					ice2.setBounds(700,300,181,124);
 					add(ice2);
-					setComponentZOrder(ice2,3);
+					setComponentZOrder(ice2,4);
 					ii2=1;
 					System.out.println("ice:"+ii2);
 				}
@@ -706,7 +708,7 @@ public class Game3 extends JPanel implements ActionListener{
 				
 					ice3.setBounds(600,150,181,124);
 					add(ice3);
-					setComponentZOrder(ice3,3);
+					setComponentZOrder(ice3,4);
 					ii3=1;
 					System.out.println("ice:"+ii3);
 				}
@@ -746,7 +748,7 @@ public class Game3 extends JPanel implements ActionListener{
 					yougert1.setBounds(424,114,535,428);
 					add(yougert1);
 					d1=1;
-					setComponentZOrder(yougert1,2);
+					setComponentZOrder(yougert1,3);
 					System.out.println("a1:"+a1);
 				}
 				else {
@@ -785,6 +787,7 @@ public class Game3 extends JPanel implements ActionListener{
 					tea1.setBounds(440,130,500,374);
 					add(tea1);
 					a1=1;
+					setComponentZOrder(tea1,3);
 					System.out.println("a1:"+a1);
 				}
 				else {
@@ -822,7 +825,7 @@ public class Game3 extends JPanel implements ActionListener{
 					milk1.setBounds(424,114,535,428);
 					add(milk1);
 					b1=1;
-					setComponentZOrder(milk1,2);
+					setComponentZOrder(milk1,3);
 					System.out.println("b1:"+b1);
 				}
 				else {
@@ -861,6 +864,7 @@ public class Game3 extends JPanel implements ActionListener{
 					h1.setBounds(490,200,400,206);
 					add(h1);
 					c1=1;
+					setComponentZOrder(h1,3);
 					System.out.println("c1:"+c1);
 				}
 			}

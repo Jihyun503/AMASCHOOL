@@ -1,4 +1,4 @@
-import java.awt.Graphics;
+﻿import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +20,7 @@ public class Result extends JPanel{
     JButton exit_btn = new JButton(exit);
 	
 	Result(Main_frame frame){
-		System.out.println("성공했습니다");
+		setLayout(null);
 		replay_btn.setBorderPainted(false);
 	    replay_btn.setContentAreaFilled(false);
 	    replay_btn.setBounds(1100, 700, 169, 63);
