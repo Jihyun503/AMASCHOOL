@@ -35,7 +35,7 @@ public class Result extends JPanel{
 
 	    exit_btn.setBorderPainted(false);
 	    exit_btn.setContentAreaFilled(false);
-	    exit_btn.setBounds(1300, 720, 107, 40);
+	    exit_btn.setBounds(1300, 720, 169, 63);
 		add(exit_btn);
 		
 		exit_btn.addActionListener(new ActionListener() {		
